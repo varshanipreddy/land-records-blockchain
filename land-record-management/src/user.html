@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+                    <title>Asset Registry</title>
+                    
+                    <!-- Bootstrap -->
+                    <!--link href="css/bootstrap.min.css" rel="stylesheet">
+                     
+                     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+                    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                    <!--[if lt IE 9]>
+                     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+                     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                     <![endif]-->
+                    
+                    <style>
+                        ul {
+                            list-style-type: none;
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+                            background-color: #333;
+                        }
+                    
+                    li {
+                        float: left;
+                    }
+                    
+                    li a {
+                        display: block;
+                        color: white;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                    }
+                    
+                    /* Change the link color to #111 (black) on hover */
+                    li a:hover {
+                        background-color: #111;
+                    }
+                    .active{
+                        background-color: dodgerblue;
+                    }
+                    
+                    .body,.html{
+                        height: auto;
+                        width:100%;
+                        margin: 0 auto;
+                        background-image: url("stephan-bechert-484081-unsplash.jpg");
+                    }
+                    .container-fluid{
+                        height: auto;
+                        width:100%;
+                        margin: 0 auto;
+                        background-color: black;}
+                    
+                    .form-group{
+                        align-content: center;
+                    }
+                    
+                    
+                    
+                    button{
+                        background-color: dodgerblue;
+                        ;             border-color:firebrick;
+                        border: none;
+                        color: white;
+                        padding: 16px 32px;
+                        text-decoration: none;
+                        margin: 4px 2px;
+                        cursor: pointer;
+                        border-radius: 8px;
+                    }
+                    
+                    .form-group{
+                        vertical-align: middle;
+                        background-color: black;
+                        align-self: center;
+                        margin-top: 30px;
+                        shape-margin: 20px;
+                        margin:30px;
+                        padding:20px,15px;
+                    }
+                    
+                    
+                    .row,.col-md-6 offset-md-3{
+                        margin: 50px;
+                        width: 50%;
+                        margin-left: 30%;
+                        margin-right:30%;
+                        
+                        
+                        padding: 10px;
+                        align-content: center;
+                    }
+                    label{
+                        color: white;
+                        font-family: sans-serif;
+                        font-size: 18px;
+                    }
+                    input[type=text] {
+                        width: 100%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        border-color: firebrick;
+                        box-sizing: border-box;
+                        border-radius: 8px;
+                    }
+                    
+                    .colmn {
+                        float: left;
+                        column-gap: 50px;
+                    }
+                    
+                    .row:after {
+                        content: "";
+                        display: table;
+                        clear: both;
+                    }
+                    
+                    .custom-select {
+                        position: relative;
+                        font-family: Arial;
+                    }
+                    
+                    .custom-select select {
+                        display: none;
+                    }
+                    
+                    .select-selected {
+                        background-color: DodgerBlue;
+                    }
+                    
+                    .select-selected:after {
+                        position: absolute;
+                        content: "";
+                        top: 14px;
+                        right: 10px;
+                        width: 0;
+                        height: 0;
+                        border: 6px solid transparent;
+                        border-color: #fff transparent transparent transparent;
+                    }
+                    
+                    
+                    .select-selected.select-arrow-active:after {
+                        border-color: transparent transparent #fff transparent;
+                        top: 7px;
+                    }
+                    
+                    
+                    .select-items div,.select-selected {
+                        color: #ffffff;
+                        padding: 8px 16px;
+                        border: 1px solid transparent;
+                        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+                        cursor: pointer;
+                    }
+                    
+                    .select-items {
+                        position: absolute;
+                        background-color: DodgerBlue;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        z-index: 99;
+                    }
+                    
+                    .select-hide {
+                        display: none;
+                    }
+                    
+                    .select-items div:hover, .same-as-selected {
+                        background-color: rgba(0, 0, 0, 0.1);
+                    }
+                    
+                    
+                        </style>
+                    </head>
+    <body>
+        
+        <div class="container-fluid">
+            <header>
+                <div class="row1">
+                    
+                    <div class="col-md-6 text-right">
+                        <ul>
+                            <li><a href="index.html">Create Property</a></li>
+                            <li><a  href="property.html">View Property</a></li>
+                            <li><a class="active" href="user.html">Add User</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="colmn">
+                        <label style="color:aqua;">Add User</label>
+                        <form action="#" id="adduser">
+                            <div class="form-group">
+                                <label style="color:darkred;">User Address</label>
+                                <input type="text" class="form-control" id="PropAddUser" name="PropAddUser" placeholder="Enter User address">
+                                    
+                                    
+                                    </div>
+                            <div class="form-group">
+                                <label style="color:darkred">User Role</label>
+                                <select class="custom-select" id="PropAddUserrole" style="width:200px; background-color: deepskyblue";>
+                                    <option value="User">User</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="SuperAdmin">SuperAdmin</option>
+                                </select>
+                            </div>
+                            
+                        </form>
+                        <center>
+                            <button type="submit"  class="btn btn-primary" id="btn-PropAddUser"  form="form1" value="Submit">Add</button></center>
+                        
+                        
+                    </div>
+                    <div class="colmn">
+                        <label style="color:aqua;">Approve User</label>
+                        <form action="#">
+                            <div class="form-group">
+                                <label style="color:darkred">User address</label>
+                                <input type="text" class="form-control" id="PropApproveUser" name="PropApproveUser" placeholder="Enter User address">
+                                    
+                                    
+                                    </div>
+                            
+                        </form>
+                        <center>
+                            <button type="submit"  class="btn btn-primary" id="btn-PropApproveUser"  form="form1" value="Submit">Approve</button></center>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="js/truffle-contract.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

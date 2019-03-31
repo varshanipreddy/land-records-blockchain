@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+                    <title>Asset Registry</title>
+                    
+                    <!-- Bootstrap -->
+                    <!--link href="css/bootstrap.min.css" rel="stylesheet">
+                     
+                     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+                    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                    <!--[if lt IE 9]>
+                     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+                     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                     <![endif]-->
+                    
+                    <style>
+                        ul {
+                            list-style-type: none;
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+                            background-color: #333;
+                        }
+                    
+                    li {
+                        float: left;
+                    }
+                    
+                    li a {
+                        display: block;
+                        color: white;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                    }
+                    
+                    /* Change the link color to #111 (black) on hover */
+                    li a:hover {
+                        background-color: #111;
+                    }
+                    .active{
+                        background-color: dodgerblue;
+                        ;
+                    }
+                    
+                    .body,.html{
+                        height: auto;
+                        width:100%;
+                        background-color: black;
+                        margin: 0 auto;
+                        background-image: url("stephan-bechert-484081-unsplash.jpg");
+                    }
+                    .container-fluid{
+                        height: auto;
+                        width:100%;
+                        background-color: black;
+                        margin: 0 auto;}
+                    
+                    .form-group{
+                        align-content: center;
+                    }
+                    
+                    label{
+                        color: white;
+                        font-family: sans-serif;
+                        font-size: 18px;
+                    }
+                    
+                    button{
+                        background-color: dodgerblue;
+                        border: none;
+                        color: white;
+                        padding: 16px 32px;
+                        text-decoration: none;
+                        margin: 4px 2px;
+                        cursor: pointer;
+                        border-radius: 8px;
+                    }
+                    
+                    .form-group{
+                        vertical-align: middle;
+                        background-color: black;
+                        align-self: center;
+                        margin-top: 30px;
+                        shape-margin: 20px;
+                        margin:30px;
+                        padding:20px,15px;
+                    }
+                    
+                    
+                    .row,.col-md-6 offset-md-3{
+                        margin: 50px;
+                        width: 50%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        
+                        
+                        padding: 10px;
+                        align-content: center;
+                    }
+                    
+                    input[type=text] {
+                        width: 100%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        box-sizing: border-box;
+                        border-radius: 8px;
+                    }
+                    
+                    
+                    #table-property {
+                        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                        border-collapse: collapse;
+                        color: white;
+                        margin-top: 30px;
+                        border-color: firebrick;
+                        width: 100%;
+                    }
+                    
+                    #table-property td, #table-property th {
+                        border: 1px solid #ddd;
+                        border-color: firebrick;
+                        padding: 8px;
+                    }
+                    
+                    #table-property tr:nth-child(even){background-color: #f2f2f2; border-color: firebrick;}
+                    
+                    #table-property tr:hover {background-color: #ddd; border-color: firebrick;}
+                    
+                    #table-property th {
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        text-align: left;
+                        border-color: firebrick;
+                        background-color:  dodgerblue;
+                        color: white;
+                    }
+                    
+                        </style>
+                    </head>
+    
+    <body>
+        <div class="container-fluid">
+            <header>
+                <div class="row1">
+                    
+                    <div class="col-md-6 text-right">
+                        <ul>
+                            <li><a href="index.html">Create Property</a></li>
+                            <li><a class="active" href="property.html">View Property</a></li>
+                            <li><a href="user.html">Add User</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="col-md-6 offset-md-0">
+                        <form action="#" id = "PropSearchform">
+                            <div class="form-group">
+                                <label style="color:aqua">Get Property Details</label>
+                                <input type="text" class="form-control" id="PropSearch" name="PropSearch" placeholder="Enter Property Id">
+                                    
+                                    
+                                    </div>
+                            
+                        </form>
+                        <center><button type="submit"  class="btn btn-primary" id="btn-PropSearch"  form="form1" value="Submit">Search Property</button>
+                        </center>
+                    </div>
+                    <table id="table-property">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Property ID</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Value</th>
+                                <th scope="col">Current Owner</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td id="resultPropID"></td>
+                                <td id="resultPropStatus"></td>
+                                <td id="resultPropValue"></td>
+                                <td id="resultPropOwner"></td>
+                                <td id="resultPropFunc1"></td>
+                                <td id="resultPropFunc2"></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <div>
+                        <div style="float: left; width: 35%" class="sec1">
+                            
+                            <!--     <form action="#" id ="PropReqChangeform"><div class="form-group"><label>Request Change of Ownership</label><input type="text" class="form-control" id="PropReqChange" name="PropReqChange" placeholder="Enter New Owner Address"></div></form><button type="submit"  class="btn btn-primary" id="btn-PropReqChange"  form="form1" value="Submit">Request</button>
+                             -->
+                        </div>
+                        <div style="float: left; width: 35%" class="sec2">
+                            
+                            <!--     <label>Accept Change of Ownership</label><button type="submit"  class="btn btn-primary" id="btn-PropAcptChange" value="Submit">Accept</button>
+                             -->
+                        </div>
+                        <div style="float: left; width: 30%" class="sec3">
+                            <!--     <form action="#" id="PropValChangeform"><div class="form-group"><label>Change Property Value/Price</label><input type="text" class="form-control" id="PropValChange" name="PropValChange" placeholder="Enter New Value/Price"></div></form><button type="submit"  class="btn btn-primary" id="btn-PropValChange"  form="form1" value="Submit">Change</button>
+                             -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="js/truffle-contract.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,555 @@
+!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+                    <title>Asset Registry</title>
+                    
+                    <!-- Bootstrap -->
+                    <!-- link href="css/bootstrap.min.css" rel="stylesheet">
+                     
+                     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+                    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                    <!--[if lt IE 9]>
+                     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+                     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                     <![endif]-->
+                    
+                    <style>
+                        
+                        ul {
+                            list-style-type: none;
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden;
+                            background-color: #333;
+                        }
+                    
+                    li {
+                        float: left;
+                    }
+                    
+                    li a {
+                        display: block;
+                        color: white;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                    }
+                    
+                    /* Change the link color to #111 (black) on hover */
+                    li a:hover {
+                        background-color: #111;
+                    }
+                    .active{
+                        background-color: dodgerblue;
+                    }
+                    
+                    .body,.html{
+                        height: auto;
+                        width:100%;
+                        margin: 0 auto;
+                        background-image: url("stephan-bechert-484081-unsplash.jpg") no-repeat;
+                        background-color: black;
+                    }
+                    .container-fluid{
+                        height: auto;
+                        width:100%;
+                        margin: 0 auto;
+                        background-image: url("stephan-bechert-484081-unsplash.jpg") no-repeat;
+                    }
+                    
+                    .container-fluid{
+                        height: auto;
+                        width:100%;
+                        margin: 0 auto;
+                        background-color: black;  }
+                    
+                    
+                    .form-group{
+                        align-content: center;
+                    }
+                    
+                    
+                    
+                    button{
+                        background-color: dodgerblue;
+                        border: none;
+                        color: white;
+                        border-color: firebrick;
+                        padding: 16px 32px;
+                        text-decoration: none;
+                        margin: 4px 2px;
+                        cursor: pointer;
+                        border-radius: 8px;
+                    }
+                    
+                    .form-group{
+                        vertical-align: middle;
+                        background-color: black;
+                        align-self: center;
+                        margin-top: 30px;
+                        shape-margin: 20px;
+                        margin:30px;
+                        padding:20px,15px;
+                    }
+                    
+                    
+                    .row,.col-md-6 offset-md-3{
+                        margin: 50px;
+                        width: 50%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        
+                        
+                        padding: 10px;
+                        align-content: center;
+                    }
+                    
+                    label{
+                        color: white;
+                        font-family: sans-serif;
+                        font-size: 18px;
+                        color: aqua;
+                    }
+                    
+                    input[type=text] {
+                        width: 100%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        box-sizing: border-box;
+                        border-radius: 8px;
+                        border-color: firebrick;
+                    }
+                    
+                        </style>
+                    
+                    
+                    </head>
+    <body>
+        
+        <div class="container-fluid">
+            <header>
+                <div class="row1">
+                    <center>
+                        <div class="col-md-6 text-right" >
+                            <ul>
+                                <li><a class="active" href="index.html">Create Property</a></li>
+                                <li><a href="property.html">View Property</a></li>
+                                <li><a href="user.html">Add User</a></li>
+                            </ul>
+                        </div>
+                    </center>
+                </div>
+            </header>
+            <centre>
+                <div class="row">
+                    
+                    <div class="col-md-6 offset-md-3">
+                        
+                        <form action="#" id="PropAdd">
+                            <div class="form-group" >
+                                <label>Property Id</label>
+                                <input type="text" class="form-control" id="PropId" name="PropId" placeholder="Enter Property Id" required>
+                                    </div>
+                            <div class="form-group">
+                                <label>Property Value/Price</label>
+                                <input type="text" class="form-control" id="PropVal" name="PropVal" placeholder="Enter Property Value/Price " required>
+                                    </div>
+                            <div class="form-group" >
+                                <label>Property Owner Address</label>
+                                <input type="text" class="form-control" id="PropOwner" name="PropOwner" placeholder="Enter Property Owner Address" required>
+                                    </div>
+                            
+                            <div class="form-group">
+                                <center>
+                                    <button type="submit" class="btn btn-primary" id="btn-PropAdd">Create Property</button>
+                                </center>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </centre>
+            
+        </div>
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="js/truffle-contract.js"></script>
+        <script src="js/app.js"></script>
+        <script>    if (typeof web3 !== 'undefined')
+            { web3 = new Web3(web3.currentProvider); }
+            else
+            {  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545")); }
+            
+            /* if (typeof web3 !== 'undefined') {
+             web3 = new Web3(web3.currentProvider);
+             } else {
+             // set the provider you want from Web3.providers
+             web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+             
+             }*/
+        
+        
+        
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+        
+        var CoursetroContract = web3.eth.contract([
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_newAdmin",
+                                                              "type": "address"
+                                                              }
+                                                              ],
+                                                   "name": "addNewAdmin",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": true,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_propId",
+                                                              "type": "uint256"
+                                                              }
+                                                              ],
+                                                   "name": "getPropertyDetails",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "uint8"
+                                                               },
+                                                               {
+                                                               "name": "",
+                                                               "type": "uint256"
+                                                               },
+                                                               {
+                                                               "name": "",
+                                                               "type": "address"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "view",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_propId",
+                                                              "type": "uint256"
+                                                              }
+                                                              ],
+                                                   "name": "rejectProperty",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_newUser",
+                                                              "type": "address"
+                                                              }
+                                                              ],
+                                                   "name": "approveUsers",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_newSuperAdmin",
+                                                              "type": "address"
+                                                              }
+                                                              ],
+                                                   "name": "addNewSuperAdmin",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": true,
+                                                   "inputs": [],
+                                                   "name": "creatorAdmin",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "address"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "view",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [],
+                                                   "name": "asset1",
+                                                   "outputs": [],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_propId",
+                                                              "type": "uint256"
+                                                              },
+                                                              {
+                                                              "name": "_newValue",
+                                                              "type": "uint256"
+                                                              }
+                                                              ],
+                                                   "name": "changeValue",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_propId",
+                                                              "type": "uint256"
+                                                              },
+                                                              {
+                                                              "name": "_newOwner",
+                                                              "type": "address"
+                                                              }
+                                                              ],
+                                                   "name": "changeOwnership",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_propId",
+                                                              "type": "uint256"
+                                                              },
+                                                              {
+                                                              "name": "_value",
+                                                              "type": "uint256"
+                                                              },
+                                                              {
+                                                              "name": "_owner",
+                                                              "type": "address"
+                                                              }
+                                                              ],
+                                                   "name": "createProperty",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": true,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "",
+                                                              "type": "uint256"
+                                                              }
+                                                              ],
+                                                   "name": "propOwnerChange",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "address"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "view",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": true,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "",
+                                                              "type": "address"
+                                                              }
+                                                              ],
+                                                   "name": "users",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "int256"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "view",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_newUser",
+                                                              "type": "address"
+                                                              }
+                                                              ],
+                                                   "name": "addNewUser",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": true,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "",
+                                                              "type": "address"
+                                                              }
+                                                              ],
+                                                   "name": "verifiedUsers",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "view",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_propId",
+                                                              "type": "uint256"
+                                                              }
+                                                              ],
+                                                   "name": "approveProperty",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": false,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "_propId",
+                                                              "type": "uint256"
+                                                              }
+                                                              ],
+                                                   "name": "approveChangeOwnership",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "",
+                                                               "type": "bool"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "nonpayable",
+                                                   "type": "function"
+                                                   },
+                                                   {
+                                                   "constant": true,
+                                                   "inputs": [
+                                                              {
+                                                              "name": "",
+                                                              "type": "uint256"
+                                                              }
+                                                              ],
+                                                   "name": "properties",
+                                                   "outputs": [
+                                                               {
+                                                               "name": "status",
+                                                               "type": "uint8"
+                                                               },
+                                                               {
+                                                               "name": "value",
+                                                               "type": "uint256"
+                                                               },
+                                                               {
+                                                               "name": "currOwner",
+                                                               "type": "address"
+                                                               }
+                                                               ],
+                                                   "payable": false,
+                                                   "stateMutability": "view",
+                                                   "type": "function"
+                                                   }
+                                                   ]);
+                                                   
+                                                   
+                                                   var Coursetro = CoursetroContract.at('0x63bd9c9d0e00f3b82068b335660cadaba18b3ac8');
+                                                   
+                                                   console.log(Coursetro);
+                                                   
+                                                   
+            </script>
+        
+    </body>
+</html>
